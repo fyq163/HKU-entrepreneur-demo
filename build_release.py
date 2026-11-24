@@ -154,6 +154,8 @@ def build_index():
         meta, body = parse_frontmatter(f.read())
     title = meta.get("title", "Python Setup Guide for HKU Beginners")
     body_html = render_body(body)
+    # Release chapters sit beside the home page rather than in pages/.
+    body_html = re.sub(r'href="pages/([^/"]+\.html(?:[#?][^"]*)?)"', r'href="\1"', body_html)
 
     doc = """<!DOCTYPE html>
 <html lang="en">
