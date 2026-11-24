@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   publish:
+    if: github.repository == 'fyq163/HKU-entrepreneur-demo' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: read

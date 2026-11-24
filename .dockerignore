@@ -1,6 +1,12 @@
 .git
 .github
 .workbuddy
+node_modules/
+dist/
+scripts/
+package.json
+package-lock.json
+wrangler.jsonc
 __pycache__/
 *.py[cod]
 .venv/

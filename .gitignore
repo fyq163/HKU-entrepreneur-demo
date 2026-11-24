@@ -6,3 +6,5 @@ hku-logo-xs.png
 .idea
 assets/.DS_Store
 .playwright-cli/
+node_modules/
+dist/

@@ -89,13 +89,27 @@ The site is plain static files — push to the repo and enable GitHub Pages on t
 (root). No Jekyll or build step is needed. `marked`, `DOMPurify`, and TDesign are loaded
 from jsDelivr, so the live site needs internet access for those scripts.
 
+## Deploy your fork to Cloudflare Workers
+
+This repository deploys as a static-assets-only Worker. Fork the repository, then in your
+Cloudflare account create a Worker connected to your fork using the Cloudflare Workers &
+Pages GitHub App. Set the build command to `npm run build` and the deploy command to
+`npm run deploy`. The first deployment creates the `hku-entrepreneur-demo` Worker in your
+own Cloudflare account; subsequent pushes to the connected branch deploy automatically.
+
+Each student needs their own Cloudflare account and must authorize/install the Cloudflare
+Workers & Pages GitHub App for their GitHub account. No Cloudflare API token is stored in
+the repository. If you already have a Worker with this name in the same Cloudflare account,
+change `name` in `wrangler.jsonc` before deploying.
+
 ## Container image for Azure Container Apps
 
-The optional container deployment is independent of the existing Worker deployment and
-the GitHub Pages workflow. The `Publish container to GHCR` workflow builds a Linux/AMD64
-image and publishes it to `ghcr.io/fyq163/hku-entrepreneur-demo` on pushes to `main` and
-`v*` tags. It can also be started manually from the Actions tab. The default-branch image
-uses the `latest` tag; each build also gets a commit-SHA tag.
+The optional container deployment is independent of the Workers deployment and the GitHub
+Pages workflow. In this upstream repository, the `Publish container to GHCR` workflow builds
+a Linux/AMD64 image on pushes to `main` and `v*` tags. It can also be started manually from
+the Actions tab. The default-branch image uses the `latest` tag; each build also gets a
+commit-SHA tag. In a fork, automatic GHCR publishing is skipped; the fork owner can run the
+workflow manually if they also want a container image.
 
 The container runs as an unprivileged Nginx process on port `8080`. Use `/healthz` for an
 HTTP health probe. For Azure Container Apps, set the ingress target port to `8080` and use
