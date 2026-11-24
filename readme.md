@@ -89,6 +89,21 @@ The site is plain static files — push to the repo and enable GitHub Pages on t
 (root). No Jekyll or build step is needed. `marked`, `DOMPurify`, and TDesign are loaded
 from jsDelivr, so the live site needs internet access for those scripts.
 
+## Container image for Azure Container Apps
+
+The optional container deployment is independent of the existing Worker deployment and
+the GitHub Pages workflow. The `Publish container to GHCR` workflow builds a Linux/AMD64
+image and publishes it to `ghcr.io/fyq163/hku-entrepreneur-demo` on pushes to `main` and
+`v*` tags. It can also be started manually from the Actions tab. The default-branch image
+uses the `latest` tag; each build also gets a commit-SHA tag.
+
+The container runs as an unprivileged Nginx process on port `8080`. Use `/healthz` for an
+HTTP health probe. For Azure Container Apps, set the ingress target port to `8080` and use
+`ghcr.io/fyq163/hku-entrepreneur-demo:latest` as the image. GHCR packages are private by
+default; configure Azure with a GitHub credential that has `read:packages`, or change the
+package visibility in GitHub Packages if it should be public. Do not commit registry
+credentials to this repository.
+
 ## Project status
 
 See `AGENTS.md` for the full plan. Chapters are skeletons with placeholder text and TODO

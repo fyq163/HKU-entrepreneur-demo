@@ -1,0 +1,16 @@
+.git
+.github
+.workbuddy
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+AGENTS.md
+readme.md
+build_release.py
+serve.py
+requirements.txt
+Dockerfile
+.dockerignore
