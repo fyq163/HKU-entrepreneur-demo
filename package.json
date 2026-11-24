@@ -4,7 +4,12 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build-worker-site.mjs",
-    "deploy": "wrangler deploy"
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "d1:create": "wrangler d1 create hku-message-board",
+    "d1:migrate:local": "wrangler d1 migrations apply hku-message-board --local",
+    "d1:migrate:remote": "wrangler d1 migrations apply hku-message-board --remote"
   },
   "devDependencies": {
     "wrangler": "4.167.0"

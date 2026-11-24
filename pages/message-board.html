@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Share a note on the HKU community message board." />
+  <title>Message Board · Python Setup Guide</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/message-board.css" />
+</head>
+<body>
+  <header id="topnav" class="topnav"></header>
+
+  <main class="confession-page">
+    <section class="confession-heading">
+      <p class="confession-eyebrow">A note to the HKU community</p>
+      <h1>Message Board</h1>
+      <p class="confession-lead">
+        Share a thought, say something you have been meaning to say, or leave a kind note
+        for someone in the community.
+      </p>
+      <p class="confession-privacy">
+        <strong>Privacy note:</strong> Your name and message appear on the public board.
+        Your email address is stored for your editing session and is never shown publicly.
+        The site maintainer can access stored data. Please do not submit sensitive information.
+      </p>
+    </section>
+
+    <section class="confession-card" aria-labelledby="confession-form-title">
+      <div class="confession-card-heading">
+        <div>
+          <p class="confession-eyebrow">One entry per browser session</p>
+          <h2 id="confession-form-title">Write your message</h2>
+        </div>
+      </div>
+
+      <form id="confession-form" novalidate>
+        <div class="confession-fields">
+          <label class="confession-field" for="confession-name">
+            <span>Your name</span>
+            <input id="confession-name" name="name" type="text" autocomplete="name" maxlength="80" required />
+          </label>
+
+          <label class="confession-field" for="confession-email">
+            <span>Email address <small>(not shown publicly)</small></span>
+            <input id="confession-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+          </label>
+
+          <label class="confession-field confession-field-wide" for="confession-message">
+            <span>Your message</span>
+            <textarea id="confession-message" name="message" rows="6" maxlength="2000" required></textarea>
+            <small class="confession-counter"><span id="message-count">0</span> / 2,000 characters</small>
+          </label>
+        </div>
+
+        <label class="confession-consent" for="confession-consent">
+          <input id="confession-consent" name="consent" type="checkbox" required />
+          <span>I understand that my name and message will be visible to everyone, while my email address will not be displayed on the board.</span>
+        </label>
+
+        <div class="confession-actions">
+          <button id="confession-submit" class="confession-submit" type="submit">Publish message</button>
+          <p id="confession-form-status" class="confession-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="confession-wall-section" aria-labelledby="recent-confessions-title">
+      <div class="confession-wall-heading">
+        <div>
+          <p class="confession-eyebrow">Shared by the community</p>
+          <h2 id="recent-confessions-title">Recent messages</h2>
+        </div>
+        <button id="confession-refresh" class="confession-refresh" type="button">Refresh</button>
+      </div>
+      <p id="confession-wall-status" class="confession-status" role="status" aria-live="polite"></p>
+      <div id="confession-list" class="confession-list" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer id="footer" class="site"></footer>
+
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/render.js"></script>
+  <script src="../assets/js/message-board.js"></script>
+</body>
+</html>

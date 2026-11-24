@@ -1,0 +1,87 @@
+.confession-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1rem, 4vw, 2.4rem) 4rem;
+}
+
+.confession-heading { margin-bottom: 1.5rem; }
+.confession-heading h1 { margin: .2rem 0 .7rem; font-size: clamp(2rem, 5vw, 3rem); }
+.confession-eyebrow {
+  margin: 0 0 .35rem;
+  color: var(--primary);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.confession-lead { max-width: 700px; color: var(--text-muted); font-size: 1.08rem; }
+.confession-privacy {
+  margin-top: 1.2rem;
+  padding: .85rem 1rem;
+  border: 1px solid #d8e7dd;
+  border-radius: var(--radius-sm);
+  background: var(--primary-soft);
+  font-size: .92rem;
+}
+.confession-card, .confession-entry {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.confession-card { padding: clamp(1.1rem, 3vw, 1.7rem); }
+.confession-card-heading h2, .confession-wall-heading h2 { margin: 0 0 1rem; }
+.confession-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.confession-field { display: grid; gap: .4rem; font-weight: 700; }
+.confession-field span { color: var(--heading); }
+.confession-field small { color: var(--text-muted); font-weight: 400; }
+.confession-field input, .confession-field textarea {
+  width: 100%;
+  padding: .72rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.confession-field input:focus, .confession-field textarea:focus {
+  outline: 3px solid color-mix(in srgb, var(--primary) 18%, transparent);
+  border-color: var(--primary);
+}
+.confession-field textarea { min-height: 150px; resize: vertical; }
+.confession-field-wide { grid-column: 1 / -1; }
+.confession-counter { justify-self: end; color: var(--text-muted); font-size: .8rem; }
+.confession-consent { display: flex; align-items: flex-start; gap: .65rem; margin: 1rem 0; font-size: .9rem; }
+.confession-consent input { margin-top: .35rem; accent-color: var(--primary); }
+.confession-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.confession-submit, .confession-refresh {
+  border: 0;
+  border-radius: 999px;
+  padding: .7rem 1.1rem;
+  background: var(--primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.confession-submit:hover, .confession-refresh:hover { background: var(--primary-dark); }
+.confession-submit:disabled { cursor: wait; opacity: .65; }
+.confession-status { margin: .3rem 0; color: var(--text-muted); font-size: .9rem; }
+.confession-status.is-error { color: var(--danger); }
+.confession-wall-section { margin-top: 2.5rem; }
+.confession-wall-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.confession-refresh { padding: .45rem .9rem; background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+.confession-refresh:hover { color: #fff; }
+.confession-list { display: grid; gap: .9rem; }
+.confession-entry { padding: 1.1rem 1.2rem; }
+.confession-entry-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.confession-entry-heading h3 { margin: 0; font-size: 1rem; }
+.confession-entry-heading time { color: var(--text-muted); font-size: .78rem; }
+.confession-entry-message { margin-bottom: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.confession-empty { padding: 1rem 0; color: var(--text-muted); }
+
+@media (max-width: 640px) {
+  .confession-fields { grid-template-columns: 1fr; }
+  .confession-field-wide { grid-column: auto; }
+  .confession-entry-heading { align-items: flex-start; flex-direction: column; gap: .15rem; }
+}

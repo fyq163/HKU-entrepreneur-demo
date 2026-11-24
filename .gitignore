@@ -8,3 +8,4 @@ assets/.DS_Store
 .playwright-cli/
 node_modules/
 dist/
+.wrangler/
