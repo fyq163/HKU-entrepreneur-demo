@@ -143,7 +143,9 @@
 
   function buildChrome() {
     var SITE = window.SITE || { brand: 'Guide', chapters: [] };
-    function pageBase() { return /pages\/.*\.html$/.test(location.pathname) ? '../' : ''; }
+    // Workers serve chapter URLs without .html; static hosts may keep it.
+    var chapter = /\/pages\/([^/]+?)(?:\.html)?$/.exec(location.pathname);
+    function pageBase() { return chapter ? '../' : ''; }
     function chapterHref(name) { return pageBase() + 'pages/' + name + '.html'; }
 
     var topnav = document.getElementById('topnav');
@@ -175,9 +177,8 @@
     }
 
     var pager = document.getElementById('pager');
-    if (pager) {
-      var cur = location.pathname.split('/').pop();
-      var idx = SITE.chapters.findIndex(function (c) { return c.name + '.html' === cur; });
+    if (pager && chapter) {
+      var idx = SITE.chapters.findIndex(function (c) { return c.name === chapter[1]; });
       if (idx >= 0) {
         if (idx > 0) pager.appendChild(pagerLink(SITE.chapters[idx - 1], 'Previous', '←', pageBase()));
         if (idx < SITE.chapters.length - 1) pager.appendChild(pagerLink(SITE.chapters[idx + 1], 'Next', '→', pageBase()));
@@ -187,7 +188,7 @@
     var footer = document.getElementById('footer');
     if (footer) {
       footer.innerHTML = '<p>' + SITE.brand + ' · <a href="' + pageBase() + 'index.html">Back to home</a></p>' +
-        '<p>Content is a work in progress — see <a href="' + pageBase() + 'readme.md">readme.md</a> for the project status.</p>';
+        '<p>Content is a work in progress.</p>';
     }
   }
 

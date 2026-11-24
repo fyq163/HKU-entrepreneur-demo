@@ -35,9 +35,9 @@ Each student must create and use a D1 database in their own Cloudflare account. 
 
 ### Connect the fork to Workers Builds
 
-In the Cloudflare dashboard, go to **Workers & Pages → Create application → GitHub**, authorize the Cloudflare Workers & Pages GitHub App, and select your fork. Set the production branch to `main`, the build command to `npm run build`, and the deploy command to `npm run deploy`. The Worker name must match `name` in `wrangler.jsonc`, which defaults to `hku-entrepreneur-demo`. Rename it if that name is already used in your Cloudflare account. Turn off preview builds if you want only `main` builds to run.
+In the Cloudflare dashboard, go to **Workers & Pages → Create application → GitHub**, authorize the Cloudflare Workers & Pages GitHub App, and select your fork. For the current Message Board demo, fork with **Copy the main branch only** unchecked and set the production branch to `dev/message-board`. Use `main` only once it contains the Message Board files (`wrangler.jsonc` and `pages/message-board.html`). Set the build command to `npm run build` and the deploy command to `npm run deploy`. The Worker name must match `name` in `wrangler.jsonc`, which defaults to `hku-entrepreneur-demo`. Rename it if that name is already used in your Cloudflare account. Turn off preview builds if you want only builds from the selected production branch to run.
 
-After the first deployment, pushes to `main` deploy the production Worker. Cloudflare manages the deployment authorization for Workers Builds; no Cloudflare API token is stored in this repository. For local development, run:
+After the first deployment, pushes to the selected production branch deploy your Worker. Cloudflare manages the deployment authorization for Workers Builds; no Cloudflare API token is stored in this repository. For local development, run:
 
 ```sh
 npm run build

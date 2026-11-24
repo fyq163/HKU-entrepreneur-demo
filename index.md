@@ -25,5 +25,5 @@ features, and is rarely what courseware or libraries expect. CPython is what
 ## How to use this guide: 
 click a card below to jump to that chapter. Tags show
 whether a chapter is required or can be skipped. You should **at least** see the 
-[Installation page](https://python-install.quantinvest.qzz.io/pages/installation.html)
+[Installation page](pages/installation.html)
 for required packages.
